@@ -1,15 +1,55 @@
 #include <stdlib.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 #include "phonebook_opt.h"
 
+
 /* FILL YOUR OWN IMPLEMENTATION HERE! */
+
+
+/* original version */
 entry *findName(char lastname[], entry *pHead)
 {
-    /* TODO: implement */
-    return NULL;
+while (pHead != NULL) {
+if (strcasecmp(lastname, pHead->lastName) == 0){
+	return pHead;
+	}
+pHead = pHead->pNext;
+}
+return NULL;
 }
 
 entry *append(char lastName[], entry *e)
 {
-    return NULL;
+/* allocate memory for the new entry and put lastName */
+e->pNext = (entry *) malloc(sizeof(entry));
+e = e->pNext;
+strcpy(e->lastName, lastName);
+e->pNext = NULL;
+return e;
 }
+
+//newww
+
+lastNameEntry *OptfindName(char lastName[], lastNameEntry *pHead)
+{
+while (pHead != NULL) {
+if (strcasecmp(lastName, pHead->lastName) == 0){
+return pHead;
+}
+pHead = pHead->pNext;
+}
+return NULL;
+}
+lastNameEntry *Optappend(char lastName[], lastNameEntry *lne)
+{
+/* allocate memory for the new entry and put lastName in it.*/
+lne->pNext = (lastNameEntry *) malloc(sizeof(lastNameEntry));
+lne = lne->pNext;
+strcpy(lne->lastName, lastName);
+lne->pNext = NULL;
+return lne;
+}
+
