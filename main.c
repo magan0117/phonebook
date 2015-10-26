@@ -4,6 +4,13 @@
 #include <time.h>
 #include <assert.h>
 
+#ifdef _HASH
+#include <phonebook_hash.h>
+#elif _MINI_STRUCTURE
+#include <phonebook_opt.h>
+#endif
+
+
 #include IMPL
 
 #define DICT_FILE "./dictionary/words.txt"
